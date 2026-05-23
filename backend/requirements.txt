@@ -1,0 +1,33 @@
+# RetailMind — Python dependencies hey
+# Install: pip install -r requirements.txt
+
+# ── Web framework ──────────────────────────────────────────────────────────────
+flask==3.0.3
+flask-cors==4.0.1
+flask-sqlalchemy==3.1.1
+sqlalchemy==2.0.36
+
+# ── Data processing ────────────────────────────────────────────────────────────
+pandas==2.2.3
+numpy==1.26.4
+
+# ── ML — search & recommendations ─────────────────────────────────────────────
+scikit-learn==1.5.2
+
+# ── ML — price forecasting ────────────────────────────────────────────────────
+prophet==1.1.6
+
+# ── Image processing (for camera route) ──────────────────────────────────────
+Pillow==11.0.0
+
+# ── Claude Vision API (for camera recognition) ────────────────────────────────
+anthropic>=0.40.0
+
+# ── ML — image search Phase 4 (optional) ──────────────────────────────────────
+# torch==2.5.1
+# torchvision==0.20.1
+# faiss-cpu==1.9.0
+
+# ── Utilities ─────────────────────────────────────────────────────────────────
+python-dotenv==1.0.1
+requests==2.32.3

@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "primary": "#091426",
+                    "on-tertiary-fixed": "#0d1c2d",
+                    "on-tertiary-container": "#8291a6",
+                    "background": "#f7f9fb",
+                    "on-tertiary": "#ffffff",
+                    "surface-dim": "#d8dadc",
+                    "secondary-fixed-dim": "#b7c8e1",
+                    "surface-container": "#eceef0",
+                    "secondary-container": "#d0e1fb",
+                    "tertiary-fixed-dim": "#b9c8de",
+                    "on-secondary": "#ffffff",
+                    "on-error-container": "#93000a",
+                    "on-secondary-container": "#54647a",
+                    "surface-variant": "#e0e3e5",
+                    "tertiary-fixed": "#d4e4fa",
+                    "surface": "#f7f9fb",
+                    "secondary-fixed": "#d3e4fe",
+                    "on-primary": "#ffffff",
+                    "inverse-surface": "#2d3133",
+                    "on-tertiary-fixed-variant": "#39485a",
+                    "on-secondary-fixed": "#0b1c30",
+                    "primary-fixed-dim": "#bcc7de",
+                    "on-surface-variant": "#45474c",
+                    "on-background": "#191c1e",
+                    "secondary": "#505f76",
+                    "surface-bright": "#f7f9fb",
+                    "surface-container-lowest": "#ffffff",
+                    "tertiary": "#061525",
+                    "outline-variant": "#c5c6cd",
+                    "on-primary-fixed": "#111c2d",
+                    "on-error": "#ffffff",
+                    "on-surface": "#191c1e",
+                    "inverse-on-surface": "#eff1f3",
+                    "error": "#ba1a1a",
+                    "surface-tint": "#545f73",
+                    "primary-fixed": "#d8e3fb",
+                    "outline": "#75777d",
+                    "surface-container-highest": "#e0e3e5",
+                    "surface-container-low": "#f2f4f6",
+                    "on-secondary-fixed-variant": "#38485d",
+                    "tertiary-container": "#1b2a3b",
+                    "on-primary-container": "#8590a6",
+                    "primary-container": "#1e293b",
+                    "error-container": "#ffdad6",
+                    "inverse-primary": "#bcc7de",
+                    "surface-container-high": "#e6e8ea",
+                    "on-primary-fixed-variant": "#3c475a"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "xl": "64px",
+                    "gutter": "24px",
+                    "xs": "8px",
+                    "md": "24px",
+                    "sm": "16px",
+                    "lg": "40px",
+                    "base": "4px",
+                    "container_max": "1440px"
+            },
+            "fontFamily": {
+                    "body-lg": ["Inter"],
+                    "body-md": ["Inter"],
+                    "display": ["Inter"],
+                    "h2": ["Inter"],
+                    "label-caps": ["Inter"],
+                    "h1": ["Inter"],
+                    "h3": ["Inter"]
+            },
+            "fontSize": {
+                    "body-lg": ["18px", {"lineHeight": "1.6", "letterSpacing": "0", "fontWeight": "400"}],
+                    "body-md": ["15px", {"lineHeight": "1.6", "letterSpacing": "0", "fontWeight": "400"}],
+                    "display": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.04em", "fontWeight": "600"}],
+                    "h2": ["24px", {"lineHeight": "1.3", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                    "label-caps": ["12px", {"lineHeight": "1", "letterSpacing": "0.08em", "fontWeight": "600"}],
+                    "h1": ["32px", {"lineHeight": "1.2", "letterSpacing": "-0.03em", "fontWeight": "600"}],
+                    "h3": ["20px", {"lineHeight": "1.4", "letterSpacing": "-0.01em", "fontWeight": "500"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .glass-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(226, 232, 240, 0.5);
+            box-shadow: 0 1px 1px rgba(30, 41, 59, 0.05), 0 12px 12px rgba(30, 41, 59, 0.04), 0 40px 40px rgba(30, 41, 59, 0.02);
+        }
+        .premium-gradient {
+            background: radial-gradient(circle at top left, #f7f9fb 0%, #e2e8f0 100%);
+        }
+        .ticker-scroll {
+            display: flex;
+            width: fit-content;
+            animation: scroll 30s linear infinite;
+        }
+        @keyframes scroll {
+            from { transform: translateX(0); }
+            to { transform: translateX(-50%); }
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 200, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md selection:bg-primary/10">
+<!-- Top Navigation Bar -->
+<header class="bg-surface/70 backdrop-blur-xl border-b border-outline-variant/30 docked full-width top-0 sticky z-50 shadow-sm">
+<nav class="flex justify-between items-center w-full px-8 py-4 max-w-container_max mx-auto">
+<div class="flex items-center gap-lg">
+<span class="font-display text-h3 font-bold text-primary">RetailMind</span>
+<div class="hidden md:flex gap-md">
+<a class="text-secondary hover:text-primary transition-colors font-body-md text-body-md" href="#">Dashboard</a>
+<a class="text-primary font-bold border-b-2 border-primary pb-1 font-body-md text-body-md" href="#">Insights</a>
+<a class="text-secondary hover:text-primary transition-colors font-body-md text-body-md" href="#">Compare</a>
+</div>
+</div>
+<div class="flex items-center gap-sm">
+<button class="material-symbols-outlined p-2 text-secondary hover:bg-surface-container-low rounded-full transition-all">notifications</button>
+<div class="h-8 w-px bg-outline-variant/30"></div>
+<button class="bg-primary text-on-primary px-sm py-2 rounded-lg font-body-md text-body-md hover:opacity-90 active:scale-95 transition-all">Upgrade to Pro</button>
+</div>
+</nav>
+</header>
+<main>
+<!-- Hero Section -->
+<section class="relative pt-xl pb-lg overflow-hidden premium-gradient">
+<div class="max-w-container_max mx-auto px-gutter text-center relative z-10">
+<span class="font-label-caps text-primary tracking-widest bg-primary-container/10 px-sm py-1 rounded-full border border-primary/5 mb-md inline-block">PRECISION INTELLIGENCE</span>
+<h1 class="font-display text-display text-primary max-w-4xl mx-auto mb-sm">Master the Marketplace with <span class="text-secondary">AI-Driven Retail Clarity.</span></h1>
+<p class="font-body-lg text-body-lg text-secondary max-w-2xl mx-auto mb-lg">Unified visual search and predictive analytics for elite retail performance across Amazon, Flipkart, and Myntra.</p>
+<!-- AI Search Bar -->
+<div class="max-w-3xl mx-auto glass-card rounded-2xl p-sm mb-xl">
+<div class="flex items-center gap-sm bg-surface-container-lowest rounded-xl px-md py-xs shadow-inner">
+<span class="material-symbols-outlined text-outline">search</span>
+<input class="flex-1 bg-transparent border-none focus:ring-0 text-body-md font-body-md py-4" placeholder="Search by product link or describe your vision..." type="text"/>
+<div class="flex items-center gap-xs">
+<button class="p-2 text-secondary hover:bg-surface-container rounded-lg transition-all" title="Upload Image">
+<span class="material-symbols-outlined">image</span>
+</button>
+<button class="bg-primary text-on-primary px-lg py-3 rounded-lg font-bold flex items-center gap-xs hover:shadow-lg transition-all active:scale-95">
+<span class="material-symbols-outlined text-[18px]">bolt</span>
+                                Analyze
+                            </button>
+</div>
+</div>
+</div>
+<!-- Live Trends Ticker -->
+<div class="glass-card rounded-full py-3 overflow-hidden max-w-5xl mx-auto border-white/40">
+<div class="ticker-scroll flex items-center">
+<div class="flex items-center gap-lg px-lg border-r border-outline-variant/30">
+<span class="font-label-caps text-secondary whitespace-nowrap">LIVE TRENDS:</span>
+<span class="flex items-center gap-base text-body-md font-medium text-primary whitespace-nowrap"><span class="text-green-600">↑ 12%</span> Velvet Blazers</span>
+<span class="flex items-center gap-base text-body-md font-medium text-primary whitespace-nowrap"><span class="text-green-600">↑ 8%</span> Sustainable Denim</span>
+<span class="flex items-center gap-base text-body-md font-medium text-primary whitespace-nowrap"><span class="text-red-600">↓ 4%</span> Tech Accessories</span>
+<span class="flex items-center gap-base text-body-md font-medium text-primary whitespace-nowrap"><span class="text-green-600">↑ 22%</span> Smart Watches</span>
+</div>
+<!-- Duplicate for seamless scroll -->
+<div class="flex items-center gap-lg px-lg">
+<span class="font-label-caps text-secondary whitespace-nowrap">LIVE TRENDS:</span>
+<span class="flex items-center gap-base text-body-md font-medium text-primary whitespace-nowrap"><span class="text-green-600">↑ 12%</span> Velvet Blazers</span>
+<span class="flex items-center gap-base text-body-md font-medium text-primary whitespace-nowrap"><span class="text-green-600">↑ 8%</span> Sustainable Denim</span>
+<span class="flex items-center gap-base text-body-md font-medium text-primary whitespace-nowrap"><span class="text-red-600">↓ 4%</span> Tech Accessories</span>
+<span class="flex items-center gap-base text-body-md font-medium text-primary whitespace-nowrap"><span class="text-green-600">↑ 22%</span> Smart Watches</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Background Decorative Elements -->
+<div class="absolute top-0 left-0 w-full h-full pointer-events-none opacity-20">
+<div class="absolute top-[-10%] right-[-5%] w-[400px] h-[400px] bg-secondary-fixed rounded-full blur-[120px]"></div>
+<div class="absolute bottom-[-10%] left-[-5%] w-[400px] h-[400px] bg-tertiary-fixed rounded-full blur-[120px]"></div>
+</div>
+</section>
+<!-- Value Props Grid -->
+<section class="py-xl bg-surface">
+<div class="max-w-container_max mx-auto px-gutter">
+<div class="text-center mb-xl">
+<h2 class="font-display text-h1 text-primary mb-sm">The Precision Suite</h2>
+<p class="font-body-md text-body-md text-secondary max-w-xl mx-auto">Every tool needed to dominate high-end retail markets with automated intelligence.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-12 gap-md">
+<!-- Multi-store Comparison -->
+<div class="md:col-span-8 group">
+<div class="glass-card rounded-2xl p-lg h-full hover:border-primary/20 transition-all cursor-default overflow-hidden relative">
+<div class="relative z-10">
+<div class="bg-primary/5 w-12 h-12 rounded-xl flex items-center justify-center mb-md group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-primary">compare_arrows</span>
+</div>
+<h3 class="font-h2 text-h2 text-primary mb-sm">Omni-Channel Comparison</h3>
+<p class="text-secondary max-w-md mb-lg">Real-time mapping of your products across Amazon, Flipkart, and Myntra. Spot pricing gaps and inventory mismatches instantly.</p>
+<div class="flex gap-sm">
+<div class="bg-white/50 px-md py-sm rounded-lg border border-outline-variant/30 flex items-center gap-xs">
+<span class="font-bold text-primary">Amazon</span>
+<span class="text-xs text-green-600 font-bold">Optimized</span>
+</div>
+<div class="bg-white/50 px-md py-sm rounded-lg border border-outline-variant/30 flex items-center gap-xs">
+<span class="font-bold text-primary">Myntra</span>
+<span class="text-xs text-red-500 font-bold">Adjust Price</span>
+</div>
+</div>
+</div>
+<div class="absolute right-[-40px] bottom-[-40px] opacity-10 group-hover:opacity-20 transition-opacity">
+<span class="material-symbols-outlined text-[320px]">monitoring</span>
+</div>
+</div>
+</div>
+<!-- AI Predictions -->
+<div class="md:col-span-4 group">
+<div class="glass-card rounded-2xl p-lg h-full border-primary/5 hover:border-primary/20 transition-all">
+<div class="bg-primary/5 w-12 h-12 rounded-xl flex items-center justify-center mb-md group-hover:rotate-12 transition-transform">
+<span class="material-symbols-outlined text-primary">auto_awesome</span>
+</div>
+<h3 class="font-h3 text-h3 text-primary mb-sm">AI Stock Predictions</h3>
+<p class="text-secondary mb-md text-body-md">Advanced ML models that forecast demand fluctuations up to 90 days in advance with 94% accuracy.</p>
+<div class="mt-auto pt-md">
+<div class="h-1 w-full bg-surface-container rounded-full overflow-hidden">
+<div class="h-full bg-primary w-[75%] rounded-full"></div>
+</div>
+<div class="flex justify-between mt-xs font-label-caps text-secondary">
+<span>Inventory Risk</span>
+<span class="text-primary">Low</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Analytics Bento Item -->
+<div class="md:col-span-4 group">
+<div class="glass-card rounded-2xl p-lg h-full hover:border-primary/20 transition-all">
+<div class="bg-primary/5 w-12 h-12 rounded-xl flex items-center justify-center mb-md">
+<span class="material-symbols-outlined text-primary">query_stats</span>
+</div>
+<h3 class="font-h3 text-h3 text-primary mb-sm">Deep Market Pulse</h3>
+<p class="text-secondary mb-md text-body-md">Analyze consumer sentiment and competitor velocity using real-time social and search signals.</p>
+</div>
+</div>
+<!-- Visual Intelligence Bento Item -->
+<div class="md:col-span-8 group overflow-hidden">
+<div class="bg-primary text-on-primary rounded-2xl p-lg h-full flex flex-col md:flex-row gap-lg items-center relative">
+<div class="flex-1">
+<h3 class="font-h2 text-h2 mb-sm">Visual Brand Integrity</h3>
+<p class="text-on-primary-container text-body-md mb-lg">Automated visual audits ensure your brand imagery is consistent and premium across all touchpoints.</p>
+<button class="border border-on-primary/20 hover:bg-on-primary/10 px-md py-sm rounded-lg font-body-md transition-all">Launch Visual Audit</button>
+</div>
+<div class="w-full md:w-1/2 rounded-xl overflow-hidden shadow-2xl relative h-48 md:h-full min-h-[200px]">
+<img class="absolute inset-0 w-full h-full object-cover" data-alt="A high-end retail interior with minimalist clothing racks and soft architectural lighting. The scene is shot with a professional architectural photography style, focusing on clean lines, a neutral color palette of soft greys and whites, and a feeling of expensive, quiet luxury that aligns with the RetailMind brand identity." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA0jo49IIo1YCP4MnaAAn7by4wcamr-meF7fSn7oNpPseqYMWBlx-McyvDkvPYW5atZC--fSmpXxMSlXoWHftV-n75ldLbtVW_24wI3Is6kWem870FbR_MfmIs1TOfMw3EQKePnxu7etWV_K7dO4NBwvcQSwBjdAC3UAy92OfkMpx4aYS80yc52QMYCbPWi1Z3UH4HvvKLMtYgouKHQeibLitUxw0z_3LuworftB6dAOrD4yyY0v2tjZ3SUtgexoIzB2bxaPXu6SNw"/>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Intelligence Showcase -->
+<section class="py-xl">
+<div class="max-w-container_max mx-auto px-gutter grid grid-cols-1 md:grid-cols-2 gap-xl items-center">
+<div>
+<span class="font-label-caps text-secondary mb-sm block">THE AI ADVANTAGE</span>
+<h2 class="font-display text-h1 text-primary mb-md">Stop Guessing. <br/>Start Orchestrating.</h2>
+<ul class="space-y-sm mb-lg">
+<li class="flex items-start gap-sm">
+<span class="material-symbols-outlined text-green-600 bg-green-50 rounded-full p-1 text-[18px]">check</span>
+<p class="text-body-md text-secondary"><strong class="text-primary">Automated Catalog Sync:</strong> Instant updates across all SKUs and store profiles.</p>
+</li>
+<li class="flex items-start gap-sm">
+<span class="material-symbols-outlined text-green-600 bg-green-50 rounded-full p-1 text-[18px]">check</span>
+<p class="text-body-md text-secondary"><strong class="text-primary">Competitor Tracking:</strong> Get alerted the moment a rival changes their promotion strategy.</p>
+</li>
+<li class="flex items-start gap-sm">
+<span class="material-symbols-outlined text-green-600 bg-green-50 rounded-full p-1 text-[18px]">check</span>
+<p class="text-body-md text-secondary"><strong class="text-primary">Visual Search Engine:</strong> Search your internal assets with image-to-data mapping.</p>
+</li>
+</ul>
+<button class="bg-primary text-on-primary px-lg py-4 rounded-xl font-bold hover:shadow-xl transition-all">Book a Personalized Demo</button>
+</div>
+<div class="glass-card rounded-3xl p-md">
+<div class="bg-surface-container rounded-2xl aspect-video relative overflow-hidden group">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" data-alt="A sophisticated data visualization dashboard showing glowing blue and white 3D charts and marketplace metrics. The interface is displayed on a high-resolution screen in a dark, professional workspace environment. The mood is focused and high-tech, emphasizing precision analytics and expensive software design with glassmorphic elements." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCL9qq0Gn4wOvFIMmPsO5u4An7outXUA1I13DQXIvdirAF6TXdArk_MeRVgy0Yv3Lt0T4o2-uV4rybUuWklEGypGb3IzHnjnbaEG2PcdqDW3qSsIU1dOxhphOK3K5PX6OwpVMAKEn012G5iJqWy_Daw-oKPc1IULu-DrQp3dbdvsWYGiMqx4Ah2eyfaBmtHwBwcWGp4vA0j4jE3pg5YQBi2pxmr-5E18L9SsfNMCpPTt1SWRb_CtELOT9OEqzW9CIfHKW_MW2SZpvE"/>
+<div class="absolute inset-0 bg-gradient-to-t from-primary/40 to-transparent"></div>
+<div class="absolute bottom-md left-md">
+<div class="glass-card rounded-lg px-md py-xs text-xs font-bold text-primary flex items-center gap-xs">
+<span class="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span>
+                                Live Analytics Sync
+                            </div>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-surface border-t border-outline-variant/30 full-width py-xl mt-xl flat no shadows">
+<div class="max-w-container_max mx-auto px-gutter flex flex-col md:flex-row justify-between items-start gap-xl">
+<div class="max-w-sm">
+<span class="font-display text-h3 font-bold text-primary block mb-sm">RetailMind</span>
+<p class="text-secondary text-body-md mb-md">Empowering high-end retail brands with precision intelligence and automated growth strategies.</p>
+<div class="flex gap-sm">
+<span class="material-symbols-outlined text-secondary hover:text-primary cursor-pointer transition-colors">public</span>
+<span class="material-symbols-outlined text-secondary hover:text-primary cursor-pointer transition-colors">hub</span>
+<span class="material-symbols-outlined text-secondary hover:text-primary cursor-pointer transition-colors">podcasts</span>
+</div>
+</div>
+<div class="grid grid-cols-2 md:grid-cols-3 gap-lg">
+<div class="flex flex-col gap-xs">
+<span class="font-label-caps text-primary mb-xs">Partners</span>
+<a class="text-secondary hover:text-primary transition-colors text-body-md" href="#">Amazon Store</a>
+<a class="text-secondary hover:text-primary transition-colors text-body-md" href="#">Flipkart Brand Page</a>
+<a class="text-secondary hover:text-primary transition-colors text-body-md" href="#">Myntra Collection</a>
+</div>
+<div class="flex flex-col gap-xs">
+<span class="font-label-caps text-primary mb-xs">Platform</span>
+<a class="text-secondary hover:text-primary transition-colors text-body-md" href="#">Overview</a>
+<a class="text-secondary hover:text-primary transition-colors text-body-md" href="#">Compare</a>
+<a class="text-secondary hover:text-primary transition-colors text-body-md" href="#">Insights</a>
+</div>
+<div class="flex flex-col gap-xs">
+<span class="font-label-caps text-primary mb-xs">Legal</span>
+<a class="text-secondary hover:text-primary transition-colors text-body-md" href="#">Privacy Policy</a>
+<a class="text-secondary hover:text-primary transition-colors text-body-md" href="#">Terms of Service</a>
+</div>
+</div>
+</div>
+<div class="max-w-container_max mx-auto px-gutter border-t border-outline-variant/30 mt-xl pt-lg text-center">
+<p class="text-on-tertiary-container text-body-md">© 2024 RetailMind AI. Precision Intelligence for High-End Retail.</p>
+</div>
+</footer>
+</body></html>
