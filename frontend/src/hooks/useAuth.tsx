@@ -89,7 +89,19 @@ export function AuthProvider({ children }: { children: ReactNode }) {
           provider === 'phone'        ? 'phone'  : 'email'
         setUser(mapFirebaseUser(fbUser, method))
       } else {
-        setUser(null)
+        // Demo mode for development/testing
+        const urlParams = new URLSearchParams(window.location.search)
+        if (urlParams.get('demo') === 'true') {
+          setUser({
+            uid:    'demo-user',
+            name:   'Demo User',
+            email:  'demo@retailmind.local',
+            avatar: null,
+            method: 'email',
+          })
+        } else {
+          setUser(null)
+        }
       }
       setLoading(false)
     })
