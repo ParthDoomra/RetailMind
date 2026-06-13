@@ -5,7 +5,7 @@
 import axios from 'axios'
 import type { Product, SearchResponse, ProductInsights, AnalyticsDashboard, PaginatedProducts } from '../types/productTypes'
 
-const api = axios.create({ baseURL: '/api', timeout: 15000 })
+const api = axios.create({ baseURL: `${import.meta.env.VITE_API_URL}/api`, timeout: 15000 })
 
 export const searchProducts = (query: string, limit = 20): Promise<SearchResponse> =>
   api.get('/search', { params: { q: query, limit } }).then(r => r.data)

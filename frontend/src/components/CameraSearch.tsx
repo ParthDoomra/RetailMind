@@ -2,6 +2,7 @@
  * RetailMind — CameraSearch Component (v3)
  * Live camera OR file upload → /api/camera-recognize → results
  */
+import { API_BASE } from "../config";
 import { useRef, useState, useCallback, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import {
@@ -80,7 +81,7 @@ export default function CameraSearch({ onResults, onClose }: Props) {
     setDetection(null)
 
     try {
-      const res = await fetch('/api/camera-recognize', {
+      const res = await fetch(`${API_BASE}/api/camera-recognize`, {
         method:  'POST',
         headers: { 'Content-Type': 'application/json' },
         body:    JSON.stringify({ image: base64 }),
